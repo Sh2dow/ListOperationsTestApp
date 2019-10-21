@@ -1,84 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ListOperationsTestApp.Models;
 using System.Web.Mvc;
 
 namespace ListOperationsTestApp.Controllers
 {
     public class ListOperationsController : Controller
     {
-        // GET: ListOperations
+        public ActionResult Result(BaseModel baseModel)
+        {
+            return View(baseModel);
+        }
+
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: ListOperations/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: ListOperations/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ListOperations/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            var baseModel = new BaseModel()
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                Id = 1,
+                Details = {
+                new DetailModel
+                {
+                    DetailId = 1,
+                    Name = "str1",
+                    BooleanValue = true
+                },
+                new DetailModel
+                {
+                    DetailId = 2,
+                    Name = "str2",
+                    BooleanValue = false
+                },
+                new DetailModel
+                {
+                    DetailId = 3,
+                    Name = "str3",
+                    BooleanValue = true
+                },new DetailModel
+                {
+                    DetailId = 4,
+                    Name = "str4",
+                    BooleanValue = false
+                }
             }
-            catch
-            {
-                return View();
-            }
+            };
+            return View("Result", baseModel);
         }
 
-        // GET: ListOperations/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ListOperations/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Update(BaseModel baseModel)
         {
             try
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ListOperations/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ListOperations/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                return View("Result", baseModel);
             }
             catch
             {
