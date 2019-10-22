@@ -5,6 +5,7 @@ namespace ListOperationsTestApp.Models
 {
     public class OrderViewModel
     {
+        [Key]
         [Required]
         [Display(Name = "Order Id")]
         public int Id { get; set; }
@@ -18,7 +19,7 @@ namespace ListOperationsTestApp.Models
                 DetailsList.ForEach(dcm =>
                 {
                     dcm.FindAll(d => d.Allowed).ForEach(d =>
-                    sum += d.Price);
+                    sum += d.Price * d.Count);
                 });
                 return sum;
             }

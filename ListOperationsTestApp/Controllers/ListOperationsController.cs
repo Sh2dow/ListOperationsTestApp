@@ -13,10 +13,9 @@ namespace ListOperationsTestApp.Controllers
             };
             for (int i = 0; i < objectCount; i++)
             {
-
                 orderViewModel.DetailsList.Add(new DetailsCollectionModel
                 {
-                    new DetailModel(i, "Detail #" + i, (i % 2) == 0, (decimal)i * 10.5M)
+                    new DetailModel((i % 2) == 0 ? i + 1 : i - 1, "Detail #" + i, (i % 2) == 0, (decimal)i * 10.5M)
                 });
             }
             return orderViewModel;
