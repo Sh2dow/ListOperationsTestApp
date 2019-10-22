@@ -5,6 +5,20 @@ namespace ListOperationsTestApp.Controllers
 {
     public class ListOperationsController : Controller
     {
+        private BaseModel DataInitializer(int objectCount)
+        {
+            var baseModel = new BaseModel();
+            for (int i = 0; i < objectCount; i++)
+            {
+
+                baseModel.DetailsList.Add(new DetailsCollectionModel
+                {
+                    new DetailModel(i, "Obj number " + i, (i % 2) == 0, (decimal)i * 10.5M)
+                });
+            }
+            return baseModel;
+        }
+
         public ActionResult Result(BaseModel baseModel)
         {
             return View(baseModel);
@@ -12,36 +26,8 @@ namespace ListOperationsTestApp.Controllers
 
         public ActionResult Index()
         {
-            var baseModel = new BaseModel()
-            {
-                Id = 1,
-                Details = {
-                new DetailModel
-                {
-                    DetailId = 1,
-                    Name = "str1",
-                    BooleanValue = true
-                },
-                new DetailModel
-                {
-                    DetailId = 2,
-                    Name = "str2",
-                    BooleanValue = false
-                },
-                new DetailModel
-                {
-                    DetailId = 3,
-                    Name = "str3",
-                    BooleanValue = true
-                },new DetailModel
-                {
-                    DetailId = 4,
-                    Name = "str4",
-                    BooleanValue = false
-                }
-            }
-            };
-            return View("Result", baseModel);
+            int detailsCount = 10;
+            return View("Result", DataInitializer(detailsCount));
         }
 
         [HttpPost]

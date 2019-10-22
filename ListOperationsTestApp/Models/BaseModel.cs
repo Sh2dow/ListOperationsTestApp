@@ -8,12 +8,26 @@ namespace ListOperationsTestApp.Models
         [Required]
         public int Id { get; set; }
 
-        public List<DetailModel> Details { get; set; }
-
-        public BaseModel ()
+        [Display(Name = "Total Cost")]
+        public decimal TotalCost
         {
-            Details = new List<DetailModel>();
+            get
+            {
+                var sum = default(decimal);
+                DetailsList.ForEach(dcm =>
+                {
+                    dcm.FindAll(d => d.Allowed).ForEach(d =>
+                    sum += d.Price);
+                });
+                return sum;
+            }
         }
 
+        public List<DetailsCollectionModel> DetailsList { get; set; }
+
+        public BaseModel()
+        {
+            DetailsList = new List<DetailsCollectionModel>();
+        }
     }
 }

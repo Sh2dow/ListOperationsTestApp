@@ -3,21 +3,31 @@
 <div class="jumbotron">
     <div class="panel panel-default">
         <div class="panel-body">
+            @Html.Raw(Json.Encode(Model.DetailsList))
+
             @using (Html.BeginForm("Update", "ListOperations", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
-                foreach (var detail in Model.Details)
-                {
-                    <div class="form-group">
-                        @Html.Label(detail.Name)
-                        @Html.TextBox(detail.Name, detail.Name, new { @class = "form-control" })
-                    </div>
+                @Html.LabelFor(m => m.TotalCost)
+                @: :
+                @Html.DisplayFor(m => m.TotalCost)
 
-                    <div class="form-group">
-                        <select class="form-control" name="@detail.BooleanValue">
-                            <option value="1">True</option>
-                            <option value="0">False</option>
-                        </select>
-                    </div>
+                foreach (var DetailsList in Model.DetailsList)
+                {
+                    foreach (var detail in DetailsList)
+                    {
+                        <div class="row">
+                            <div class="form-inline">
+                                @Html.TextBox(detail.Name, detail.Name, new { @class = "form-control" })
+
+                                @{
+                                    var checkboxAttributes = detail.Allowed ?
+                                        (object)new { @class = "checkbox form-control", @checked = "checked" } :
+                                        (object)new { @class = "checkbox form-control" };
+                                }
+                                @Html.CheckBox("detail.Allowed", checkboxAttributes)
+                            </div>
+                        </div>
+                    }
                 }
                 <button type="submit" class="btn btn-primary">Update</button>
             }
