@@ -6,6 +6,7 @@ namespace ListOperationsTestApp.Models
     public class OrderViewModel
     {
         [Required]
+        [Display(Name = "Order Id")]
         public int Id { get; set; }
 
         [Display(Name = "Total Cost")]
