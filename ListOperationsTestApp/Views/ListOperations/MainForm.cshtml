@@ -1,0 +1,33 @@
+﻿@model ListOperationsTestApp.Models.OrderModel
+
+<div class="jumbotron">
+    <div class="panel panel-default">
+        <div class="panel-body" id="mainForm">
+            @*@Html.Raw(Json.Encode(Model.DetailsList))*@
+
+            @*@using (Ajax.BeginForm("Update", "ListOperations", new { Id = Model.Id, DetailsList = Model.DetailsList }, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "orders" }))*@
+
+            @*@using (@Html.BeginForm("Update", "ListOperations", FormMethod.Post, new { enctype = "multipart/form-data", id = "mainForm" }))*@
+
+            @using (Html.BeginForm("Update", "ListOperations", FormMethod.Post))
+            {
+                <div>
+                    @Html.DisplayTextFor(m => m.Id)
+                </div>
+
+                <div class="form-group">
+                    @Html.DisplayTextFor(m => m.TotalCost)
+                </div>
+
+                foreach (var DetailsList in Model.DetailsList)
+                {
+                    foreach (var detail in DetailsList)
+                    {
+                        @Html.Partial("DetailsForm", detail)
+                    }
+                }
+                <button type="submit" class="btn btn-primary">Update</button>
+            }
+        </div>
+    </div>
+</div>
