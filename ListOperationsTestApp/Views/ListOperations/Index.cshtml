@@ -12,7 +12,7 @@
                     @Html.Label("Allowed", new { @class = "col-md-3" })
                 </div>
                 <div class="row col-md-12 form-group">
-                    @for (var i = 0; i < Model.DetailsList.Count; i++)
+                    @for (var i = 0; i < ViewBag.LimitCount; i++)
                     {
                         <div class="form-group">
                             @for (var j = 0; j < Model.DetailsList[i].Count; j++)
@@ -26,11 +26,11 @@
 
                                     <span class="col-md-offset-2">
                                         @{
-                                            var checkboxAttributes = Model.DetailsList[i][j].Allowed ?
+                                            var checkboxAttributes = Model.DetailsList[i][j].Included ?
                                                 (object)new { htmlAttributes = new { @class = "checkbox-inline", @checked = "checked" } } :
                                                 (object)new { htmlAttributes = new { @class = "checkbox-inline" } };
                                         }
-                                        @Html.EditorFor(m => m.DetailsList[i][j].Allowed, checkboxAttributes)
+                                        @Html.EditorFor(m => m.DetailsList[i][j].Included, checkboxAttributes)
                                     </span>
                                 </div>
                             }

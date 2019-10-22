@@ -18,7 +18,7 @@ namespace ListOperationsTestApp.Models
                 var sum = default(decimal);
                 DetailsList.ForEach(dcm =>
                 {
-                    dcm.FindAll(d => d.Allowed).ForEach(d =>
+                    dcm.FindAll(d => d.Included).ForEach(d =>
                     sum += d.Price * d.Count);
                 });
                 return sum;

@@ -18,8 +18,8 @@ namespace ListOperationsTestApp.Models
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Allowed")]
-        public bool Allowed { get; set; }
+        [Display(Name = "Included")]
+        public bool Included { get; set; }
 
         [Required]
         [Display(Name = "Price")]
@@ -32,7 +32,7 @@ namespace ListOperationsTestApp.Models
         {
             Count = count;
             Name = name;
-            Allowed = allowed;
+            Included = allowed;
             Price = price;
         }
     }
