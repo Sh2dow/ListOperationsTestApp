@@ -9,24 +9,23 @@ namespace ListOperationsTestApp.Controllers
 {
     public class ListOperationsController : Controller
     {
-        private OrderModel DataInitializer(int objectCount)
+        private OrderViewModel DataInitializer(int objectCount)
         {
-            var orderModel = new OrderModel()
+            var orderModel = new OrderViewModel()
             {
                 Id = 1
             };
+            orderModel.DetailsList = new List<DetailsCollectionModel>();
+            DetailsCollectionModel.Instance.Clear();
             for (int i = 0; i < objectCount; i++)
             {
-
-                orderModel.DetailsList.Add(new DetailsCollectionModel
-                {
-                    new DetailModel(i, "Detail number " + i, (i % 2) == 0, (decimal)i * 10.5M)
-                });
+                DetailsCollectionModel.Instance.Add(new DetailModel(i, "Detail number " + i, (i % 2) == 0, (decimal)i * 10.5M));
             }
+            orderModel.DetailsList.Add(DetailsCollectionModel.Instance);
             return orderModel;
         }
 
-        public ActionResult Result(OrderModel orderModel)
+        public ActionResult Result(OrderViewModel orderModel)
         {
             return View(orderModel);
         }
@@ -34,18 +33,19 @@ namespace ListOperationsTestApp.Controllers
         public ActionResult Index()
         {
             int detailsCount = 10;
-            return View("MainForm", DataInitializer(detailsCount));
+            var model = DataInitializer(detailsCount);
+            return View(model);
         }
-
 
         [HttpPost]
-        public ActionResult Update(OrderModel orderModel)
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(OrderViewModel model)
         {
             //var orderModel = BindForm(form);
-            return View("MainForm", orderModel);
+            return View(model);
         }
 
-        public OrderModel BindForm(FormCollection form)
+        public OrderViewModel BindForm(FormCollection form)
         {
             var request = Request;
 
@@ -70,7 +70,7 @@ namespace ListOperationsTestApp.Controllers
                     }
                 }
             }
-            return (OrderModel)orderModel;
+            return (OrderViewModel)orderModel;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ListOperationsTestApp.Models
 {
-    public class OrderModel
+    public class OrderViewModel
     {
         [Required]
         public int Id { get; set; }
@@ -25,7 +25,7 @@ namespace ListOperationsTestApp.Models
 
         public List<DetailsCollectionModel> DetailsList { get; set; }
 
-        public OrderModel()
+        public OrderViewModel()
         {
             DetailsList = new List<DetailsCollectionModel>();
         }

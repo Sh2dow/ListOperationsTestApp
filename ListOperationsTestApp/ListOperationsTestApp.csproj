@@ -162,7 +162,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\ListOperations\MainForm.cshtml" />
+    <Content Include="Views\ListOperations\Index.cshtml" />
     <Content Include="Views\ListOperations\DetailsForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
