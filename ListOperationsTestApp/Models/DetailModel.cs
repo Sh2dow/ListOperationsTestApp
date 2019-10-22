@@ -24,6 +24,8 @@ namespace ListOperationsTestApp.Models
         [Display(Name = "Price")]
         public decimal Price { get; set; }
 
+        public DetailModel() { }
+
         public DetailModel(int number, string name, bool allowed, decimal price)
         {
             Number = number;
