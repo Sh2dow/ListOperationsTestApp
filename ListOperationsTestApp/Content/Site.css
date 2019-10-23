@@ -25,6 +25,5 @@ textarea {
 }
 
 input[type="checkbox"] {
-    transform: scale(2.1);
-    zoom: 1.5;
+    transform: scale(3);
 }

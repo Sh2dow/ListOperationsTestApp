@@ -16,20 +16,18 @@ namespace ListOperationsTestApp.Models
             get
             {
                 var sum = default(decimal);
-                DetailsList.ForEach(dcm =>
-                {
-                    dcm.FindAll(d => d.Included).ForEach(d =>
-                    sum += d.Price * d.Count);
-                });
+                DetailsList
+                    .FindAll(d => d.Included)
+                    .ForEach(d => sum += d.Price * d.Count);
                 return sum;
             }
         }
 
-        public List<DetailsCollectionModel> DetailsList { get; set; }
+        public List<DetailModel> DetailsList { get; set; }
 
         public OrderViewModel()
         {
-            DetailsList = new List<DetailsCollectionModel>();
+            DetailsList = new List<DetailModel>();
         }
     }
 }
