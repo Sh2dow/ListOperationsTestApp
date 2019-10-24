@@ -1,12 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ListOperationsApp.Models
+namespace MovieCollectionApp.ViewModels.Models
 {
-    public class MovieViewModel {
+    public class MovieViewModel
+    {
 
         public MovieViewModel() { }
 
-        public MovieViewModel(string name,int year, double? rating)
+        public MovieViewModel(string name, int year, double? rating)
         {
             Name = name;
             Year = year;

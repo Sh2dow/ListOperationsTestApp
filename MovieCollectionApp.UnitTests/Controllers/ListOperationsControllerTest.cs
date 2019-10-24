@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
-using ListOperationsApp.Controllers;
-using ListOperationsApp.Models;
+using MovieCollectionApp.WebApp.Controllers;
+using MovieCollectionApp.ViewModels.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ListOperationsApp.Tests.Controllers
+namespace MovieCollectionApp.UnitTests.Controllers
 {
     [TestClass]
     public class ListOperationsControllerTest

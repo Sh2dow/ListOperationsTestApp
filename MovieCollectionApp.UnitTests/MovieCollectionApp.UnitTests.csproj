@@ -9,8 +9,8 @@
     <ProjectGuid>{BAFA9674-F58A-4A7F-ABE1-B6EBFCB3F497}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ListOperationsApp.Tests</RootNamespace>
-    <AssemblyName>ListOperationsApp.Tests</AssemblyName>
+    <RootNamespace>MovieCollectionApp.UnitTests</RootNamespace>
+    <AssemblyName>MovieCollectionApp.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -99,9 +99,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ListOperationsApp\ListOperationsApp.csproj">
+    <ProjectReference Include="..\MovieCollectionApp.Models\MovieCollectionApp.Models.csproj">
+      <Project>{116f8950-1e6c-4971-a563-144a4a306b12}</Project>
+      <Name>MovieCollectionApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieCollectionApp.WebApp\MovieCollectionApp.WebApp.csproj">
       <Project>{12263408-9b3c-4d4e-97a8-93a725a3f1ec}</Project>
-      <Name>ListOperationsApp</Name>
+      <Name>MovieCollectionApp.WebApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

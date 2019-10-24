@@ -1,10 +1,10 @@
-﻿using ListOperationsApp.Models;
+﻿using MovieCollectionApp.ViewModels.Models;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Web.Mvc;
 
-[assembly: InternalsVisibleTo("ListOperationsApp.Tests")]
-namespace ListOperationsApp.Controllers
+[assembly: InternalsVisibleTo("MovieCollectionApp.UnitTests")]
+namespace MovieCollectionApp.WebApp.Controllers
 {
     public class ListOperationsController : Controller
     {

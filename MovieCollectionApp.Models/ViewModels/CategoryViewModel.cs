@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ListOperationsApp.Models
+namespace MovieCollectionApp.ViewModels.Models
 {
     public class CategoryViewModel
     {

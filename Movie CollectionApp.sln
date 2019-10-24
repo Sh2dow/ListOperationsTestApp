@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListOperationsApp", "ListOperationsApp\ListOperationsApp.csproj", "{12263408-9B3C-4D4E-97A8-93A725A3F1EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieCollectionApp.WebApp", "MovieCollectionApp.WebApp\MovieCollectionApp.WebApp.csproj", "{12263408-9B3C-4D4E-97A8-93A725A3F1EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListOperationsApp.Tests", "ListOperationsApp.Tests\ListOperationsApp.Tests.csproj", "{BAFA9674-F58A-4A7F-ABE1-B6EBFCB3F497}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieCollectionApp.UnitTests", "MovieCollectionApp.UnitTests\MovieCollectionApp.UnitTests.csproj", "{BAFA9674-F58A-4A7F-ABE1-B6EBFCB3F497}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieCollectionApp.Models", "MovieCollectionApp.Models\MovieCollectionApp.Models.csproj", "{116F8950-1E6C-4971-A563-144A4A306B12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BAFA9674-F58A-4A7F-ABE1-B6EBFCB3F497}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAFA9674-F58A-4A7F-ABE1-B6EBFCB3F497}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAFA9674-F58A-4A7F-ABE1-B6EBFCB3F497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{116F8950-1E6C-4971-A563-144A4A306B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{116F8950-1E6C-4971-A563-144A4A306B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{116F8950-1E6C-4971-A563-144A4A306B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{116F8950-1E6C-4971-A563-144A4A306B12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
