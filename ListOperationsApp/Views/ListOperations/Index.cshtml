@@ -7,8 +7,13 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            @Html.LabelFor(m => m.Id, new { @class = "control-label col-md-4" })
-                            @Html.EditorFor(m => m.Id, new { @class = "form-control col-md-4" })
+                            <th>
+                                @Html.LabelFor(m => m.Id, new { @class = "control-label" })
+                            </th>
+                            <th>
+                                @Html.EditorFor(m => m.Id, new { @class = "form-control" })
+                            </th>
+                        </tr>
                         <tr>
                             <th>
                                 @Html.Label("Name")

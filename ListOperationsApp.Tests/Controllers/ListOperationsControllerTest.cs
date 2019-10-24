@@ -13,14 +13,19 @@ namespace ListOperationsApp.Tests.Controllers
         {
             // Arrange
             var controller = new ListOperationsController();
-            int objectCount = 10;
+            int categoriesCount = 4;
+            int moviesCount = 18;
 
             // Act
-            var result = controller.DataInitializer(objectCount) as OrderViewModel;
+            var movieCollection = controller.DataInitializer() as MovieCollectionViewModel;
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.IsTrue(result.DetailsList.Count == objectCount);
+            Assert.IsNotNull(movieCollection);
+            Assert.IsTrue(movieCollection.Categories.Count == categoriesCount);
+            var allMoviesCount = default(int); 
+            movieCollection.Categories
+                .ForEach(c => allMoviesCount += c.Movies.Count);
+            Assert.IsTrue(allMoviesCount == moviesCount);
         }
 
         [TestMethod]
@@ -43,7 +48,7 @@ namespace ListOperationsApp.Tests.Controllers
         {
             // Arrange
             var controller = new ListOperationsController();
-            var orderViewModel = new OrderViewModel();
+            var orderViewModel = new MovieCollectionViewModel();
             int LimitCount = 3;
 
             // Act

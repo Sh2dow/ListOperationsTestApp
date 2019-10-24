@@ -22,8 +22,8 @@ namespace ListOperationsApp.Models
             {
                 var sum = default(int);
                 Categories
-                    .ForEach(c => c.Movies
-                    .ForEach(m => sum += m.Seen ? 1 : 0));
+                    .ForEach(c => sum += c.Movies
+                    .FindAll(m => m.Seen).Count);
                 return sum;
             }
         }
