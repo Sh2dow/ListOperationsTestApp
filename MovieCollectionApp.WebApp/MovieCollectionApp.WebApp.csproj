@@ -207,6 +207,14 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MovieCollectionApp.Business\MovieCollectionApp.Business.csproj">
+      <Project>{35a68006-1b01-4628-a2e7-821fc39689ec}</Project>
+      <Name>MovieCollectionApp.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieCollectionApp.Infrastructure\MovieCollectionApp.Infrastructure.csproj">
+      <Project>{6d81b760-5662-44ee-ab35-2f23f0affad9}</Project>
+      <Name>MovieCollectionApp.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MovieCollectionApp.Models\MovieCollectionApp.Models.csproj">
       <Project>{116f8950-1e6c-4971-a563-144a4a306b12}</Project>
       <Name>MovieCollectionApp.Models</Name>

@@ -27,5 +27,7 @@ namespace MovieCollectionApp.ViewModels.Models
                 return sum;
             }
         }
+
+        public int CategoryLimitCount { get; set; }
     }
 }

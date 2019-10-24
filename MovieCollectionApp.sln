@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieCollectionApp.UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieCollectionApp.Models", "MovieCollectionApp.Models\MovieCollectionApp.Models.csproj", "{116F8950-1E6C-4971-A563-144A4A306B12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieCollectionApp.Business", "MovieCollectionApp.Business\MovieCollectionApp.Business.csproj", "{35A68006-1B01-4628-A2E7-821FC39689EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieCollectionApp.Infrastructure", "MovieCollectionApp.Infrastructure\MovieCollectionApp.Infrastructure.csproj", "{6D81B760-5662-44EE-AB35-2F23F0AFFAD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{116F8950-1E6C-4971-A563-144A4A306B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{116F8950-1E6C-4971-A563-144A4A306B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{116F8950-1E6C-4971-A563-144A4A306B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35A68006-1B01-4628-A2E7-821FC39689EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35A68006-1B01-4628-A2E7-821FC39689EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35A68006-1B01-4628-A2E7-821FC39689EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35A68006-1B01-4628-A2E7-821FC39689EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D81B760-5662-44EE-AB35-2F23F0AFFAD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D81B760-5662-44EE-AB35-2F23F0AFFAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D81B760-5662-44EE-AB35-2F23F0AFFAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D81B760-5662-44EE-AB35-2F23F0AFFAD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\BusinessTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ListOperationsControllerTest.cs" />
   </ItemGroup>
@@ -101,6 +102,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MovieCollectionApp.Business\MovieCollectionApp.Business.csproj">
+      <Project>{35A68006-1B01-4628-A2E7-821FC39689EC}</Project>
+      <Name>MovieCollectionApp.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MovieCollectionApp.Models\MovieCollectionApp.Models.csproj">
       <Project>{116f8950-1e6c-4971-a563-144a4a306b12}</Project>
       <Name>MovieCollectionApp.Models</Name>

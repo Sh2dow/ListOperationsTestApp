@@ -16,6 +16,14 @@
                     </tr>
                     <tr>
                         <th>
+                            @Html.Label("Categories Limit"):
+                        </th>
+                        <th>
+                            @Html.EditorFor(m => m.CategoryLimitCount, new { @class = "form-control" })
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
                             @Html.Label("Name")
                         </th>
                         <th>
