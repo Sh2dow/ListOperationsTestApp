@@ -37,6 +37,9 @@
                                 @{
                                     bool condition = i >= ViewBag.CategoryLimitCount;
                                 }
+                                @Html.LabelFor(c => c.Categories[i].Name):
+                            </th>
+                            <th>
                                 @Html.TextBoxFor(c => c.Categories[i].Name, new { disabled = condition, @class = "control-label" })
                                 @Html.HiddenFor(c => c.Categories[i].Name)
                             </th>
@@ -51,7 +54,7 @@
                         {
                             <tr class="position-sticky" id="categoryToggleExternalContent">
                                 @{
-                                    var conditionAttributes = i >= ViewBag.CategoryLimitCount ?
+                                    var conditionAttributes = !Model.Categories[i].Enabled ?
                                         (object)new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } } :
                                         (object)new { htmlAttributes = new { @class = "form-control" } };
                                 }
@@ -71,7 +74,7 @@
                                     <label class="btn btn-dark">
                                         @{
                                             object checkboxAttributes;
-                                            if (i >= ViewBag.CategoryLimitCount)
+                                            if (!Model.Categories[i].Enabled)
                                             {
                                                 checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
                                                       (object)new { htmlAttributes = new { disabled = "disabled", @class = "checkbox-large", @checked = "checked" } } :
