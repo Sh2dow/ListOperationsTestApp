@@ -16,6 +16,7 @@ namespace MovieCollectionApp.WebApp.Controllers
                     {
                         Id = 1,
                         Name = "Thriller",
+                        Enabled = true,
                         Movies = new List<MovieViewModel>
                         {
                             new MovieViewModel("Joker", 2019, 8.9),
@@ -25,11 +26,11 @@ namespace MovieCollectionApp.WebApp.Controllers
                             new MovieViewModel("The Dark Knight Rises", 2012, 8.4),
                         }  
                     },
-
                 new CategoryViewModel
                     {
                         Id = 2,
                         Name = "Sci-fi",
+                        Enabled = true,
                         Movies = new List<MovieViewModel>
                         {
                             new MovieViewModel("Men in Black", 1997, 7.3),
@@ -43,6 +44,7 @@ namespace MovieCollectionApp.WebApp.Controllers
                     {
                         Id = 3,
                         Name = "Comedy",
+                        Enabled = true,
                         Movies = new List<MovieViewModel>
                         {
                             new MovieViewModel("Back to the Future", 1985, 8.5),
@@ -51,11 +53,11 @@ namespace MovieCollectionApp.WebApp.Controllers
                             new MovieViewModel("Galaxy Quest", 1999,  7.3),
                         }
                     },
-
                 new CategoryViewModel
                     {
                         Id = 4,
                         Name = "Drama",
+                        Enabled = false,
                         Movies = new List<MovieViewModel>
                         {
                             new MovieViewModel("The Lobster", 2015, 7.1),
@@ -80,14 +82,14 @@ namespace MovieCollectionApp.WebApp.Controllers
         public ActionResult Index()
         {
             var model = DataInitializer();
-            ViewBag.LimitCount = 3;
+            ViewBag.CategoryLimitCount = 3;
             return View(model);
         }
 
         [HttpPost]
         public ActionResult Index(MovieCollectionViewModel order)
         {
-            ViewBag.LimitCount = 3;
+            ViewBag.CategoryLimitCount = 3;
             return View(order);
         }
     }

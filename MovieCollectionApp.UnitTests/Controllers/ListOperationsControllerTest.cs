@@ -49,14 +49,14 @@ namespace MovieCollectionApp.UnitTests.Controllers
             // Arrange
             var controller = new ListOperationsController();
             var orderViewModel = new MovieCollectionViewModel();
-            int LimitCount = 3;
+            int CategoryLimitCount = 3;
 
             // Act
             var result = controller.Index(orderViewModel) as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.ViewBag.LimitCount, LimitCount);
+            Assert.AreEqual(result.ViewBag.CategoryLimitCount, CategoryLimitCount);
         }
     }
 }

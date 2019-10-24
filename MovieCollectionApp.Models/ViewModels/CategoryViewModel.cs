@@ -17,6 +17,8 @@ namespace MovieCollectionApp.ViewModels.Models
         [Display(Name = "Category Name")]
         public string Name { get; set; }
 
+        public bool Enabled { get; set; }
+
         public List<MovieViewModel> Movies { get; set; }
     }
 }

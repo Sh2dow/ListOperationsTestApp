@@ -34,28 +34,55 @@
                     {
                         <tr>
                             <th>
-                                @Html.TextBoxFor(c => c.Categories[i].Name, new { disabled = "disabled", @class = "control-label" })
+                                @{
+                                    bool condition = i >= ViewBag.CategoryLimitCount;
+                                }
+                                @Html.TextBoxFor(c => c.Categories[i].Name, new { disabled = condition, @class = "control-label" })
                                 @Html.HiddenFor(c => c.Categories[i].Name)
+                            </th>
+                            <th>
+                                <label class="btn btn-dark">
+                                    @Html.CheckBoxFor(c => c.Categories[i].Enabled, new { @checked = Model.Categories[i].Enabled, @class = "checkbox-large" })
+                                    @Html.HiddenFor(c => c.Categories[i].Enabled)
+                                </label>
                             </th>
                         </tr>
                         for (var j = 0; j < Model.Categories[i].Movies.Count; j++)
                         {
-                            <tr>
+                            <tr class="position-sticky" id="categoryToggleExternalContent">
+                                @{
+                                    var conditionAttributes = i >= ViewBag.CategoryLimitCount ?
+                                        (object)new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } } :
+                                        (object)new { htmlAttributes = new { @class = "form-control" } };
+                                }
                                 <td>
-                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Name, conditionAttributes)
+                                    @Html.HiddenFor(m => m.Categories[i].Movies[j].Name)
                                 </td>
                                 <td>
-                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Year, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Year, conditionAttributes)
+                                    @Html.HiddenFor(m => m.Categories[i].Movies[j].Year)
                                 </td>
                                 <td>
-                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Rating, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Rating, conditionAttributes)
+                                    @Html.HiddenFor(m => m.Categories[i].Movies[j].Rating)
                                 </td>
                                 <td>
                                     <label class="btn btn-dark">
                                         @{
-                                            var checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
-                                                (object)new { htmlAttributes = new { @class = "checkbox-large", @checked = "checked" } } :
-                                                (object)new { htmlAttributes = new { @class = "checkbox-large" } };
+                                            object checkboxAttributes;
+                                            if (i >= ViewBag.CategoryLimitCount)
+                                            {
+                                                checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
+                                                      (object)new { htmlAttributes = new { disabled = "disabled", @class = "checkbox-large", @checked = "checked" } } :
+                                                      (object)new { htmlAttributes = new { disabled = "disabled", @class = "checkbox-large" } };
+                                            }
+                                            else
+                                            {
+                                                checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
+                                                      (object)new { htmlAttributes = new { @class = "checkbox-large", @checked = "checked" } } :
+                                                      (object)new { htmlAttributes = new { @class = "checkbox-large" } };
+                                            }
                                         }
                                         @Html.EditorFor(m => m.Categories[i].Movies[j].Seen, checkboxAttributes)
                                     </label>
