@@ -33,14 +33,14 @@ namespace MovieCollectionApp.UnitTests.Controllers
         {
             // Arrange
             var controller = new ListOperationsController();
-            int LimitCount = 3;
+            int CategoryLimitCount = 3;
 
             // Act
             var result = controller.Index() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.ViewBag.LimitCount, LimitCount);
+            Assert.AreEqual(result.ViewBag.LimitCount, CategoryLimitCount);
         }
 
         [TestMethod]
