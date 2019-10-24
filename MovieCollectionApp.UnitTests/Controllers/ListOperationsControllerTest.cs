@@ -40,7 +40,7 @@ namespace MovieCollectionApp.UnitTests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.ViewBag.LimitCount, CategoryLimitCount);
+            Assert.AreEqual(result.ViewBag.CategoryLimitCount, CategoryLimitCount);
         }
 
         [TestMethod]
