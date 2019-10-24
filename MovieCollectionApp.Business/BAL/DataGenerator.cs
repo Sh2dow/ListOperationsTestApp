@@ -3,20 +3,19 @@ using MovieCollectionApp.ViewModels.Models;
 using MovieCollectionApp.Infrastructure;
 using MovieCollectionApp.Infrastructure.Attributes;
 using System;
-using System.Linq;
+using System.Collections;
 
 namespace MovieCollectionApp.Business
 {
     public class DataGenerator
     {
+        private static readonly ArrayList CategoriesEnabledByDefault = new ArrayList { Categories.Thriller, Categories.SciFi, Categories.Comedy };
+
         public static MovieCollectionViewModel InitializeData()
         {
-            var categories = InitCategories();
-
             var movieCollectionViewModel = new MovieCollectionViewModel()
             {
                 Id = 1,
-                CategoryLimitCount = 3,
                 Categories = InitCategories()
             };
 
@@ -26,32 +25,37 @@ namespace MovieCollectionApp.Business
         private static List<CategoryViewModel> InitCategories()
         {
             var categories = new List<CategoryViewModel>();
-            foreach (var category in Enum.GetValues(typeof(Categories)))
+            foreach (Categories category in Enum.GetValues(typeof(Categories)))
             {
-                categories.Add(
-                    new CategoryViewModel
-                    {
-                        Id = (int)category,
-                        Name = StringEnum.GetStringValue((Categories)category),
-                        Movies = FillWithMovies(category)
-                    });
+                categories.Add(CreateCategory(category, CategoriesEnabledByDefault.Contains(category)));
             }
             return categories;
         }
 
-        public static List<MovieViewModel> FillWithMovies(object cat)
+        public static CategoryViewModel CreateCategory(Categories category, bool enabled)
         {
-            switch ((Categories)cat)
+            return new CategoryViewModel
+            {
+                Id = (int)category,
+                Name = StringEnum.GetStringValue(category),
+                Movies = FillWithMovies(category),
+                Enabled = enabled
+            };
+        }
+
+        public static List<MovieViewModel> FillWithMovies(Categories category)
+        {
+            switch (category)
             {
                 case Categories.Thriller:
                     return new List<MovieViewModel>
-                            {
-                                new MovieViewModel("Joker", 2019, 8.9),
-                                new MovieViewModel("Breaking Bad", 2013, 9.5),
-                                new MovieViewModel("Fargo", 2014, 9.0),
-                                new MovieViewModel("No Time to Die", 2020, null),
-                                new MovieViewModel("The Dark Knight Rises", 2012, 8.4),
-                            };
+                    {
+                        new MovieViewModel("Joker", 2019, 8.9),
+                        new MovieViewModel("Breaking Bad", 2013, 9.5),
+                        new MovieViewModel("Fargo", 2014, 9.0),
+                        new MovieViewModel("No Time to Die", 2020, null),
+                        new MovieViewModel("The Dark Knight Rises", 2012, 8.4),
+                    };
                 case Categories.SciFi:
                     return new List<MovieViewModel>
                     {
@@ -80,13 +84,6 @@ namespace MovieCollectionApp.Business
                 default:
                     return new List<MovieViewModel> { };
             }
-        }
-
-        public static MovieCollectionViewModel ModifyData(MovieCollectionViewModel orderViewModel)
-        {
-            int range = orderViewModel.CategoryLimitCount;
-            orderViewModel.Categories.RemoveRange(range, orderViewModel.Categories.Count - range);
-            return orderViewModel;
         }
     }
 }

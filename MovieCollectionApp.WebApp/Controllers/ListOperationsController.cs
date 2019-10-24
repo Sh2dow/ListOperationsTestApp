@@ -11,14 +11,12 @@ namespace MovieCollectionApp.WebApp.Controllers
         public ActionResult Index()
         {
             MovieCollectionViewModel orderViewModel = DataGenerator.InitializeData();
-            orderViewModel = DataGenerator.ModifyData(orderViewModel);
             return View(orderViewModel);
         }
 
         [HttpPost]
         public ActionResult Index(MovieCollectionViewModel orderViewModel)
         {
-            DataGenerator.ModifyData(orderViewModel);
             return View(orderViewModel);
         }
     }

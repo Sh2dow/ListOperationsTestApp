@@ -49,5 +49,11 @@
     <Compile Include="ViewModels\MovieCollectionViewModel.cs" />
     <Compile Include="ViewModels\MovieViewModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MovieCollectionApp.Infrastructure\MovieCollectionApp.Infrastructure.csproj">
+      <Project>{6D81B760-5662-44EE-AB35-2F23F0AFFAD9}</Project>
+      <Name>MovieCollectionApp.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

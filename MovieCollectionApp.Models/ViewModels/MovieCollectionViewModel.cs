@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MovieCollectionApp.Infrastructure;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MovieCollectionApp.ViewModels.Models
@@ -20,14 +21,12 @@ namespace MovieCollectionApp.ViewModels.Models
         {
             get
             {
-                var sum = default(int);
+                int sum = 0;
                 Categories
                     .ForEach(c => sum += c.Movies
                     .FindAll(m => m.Seen).Count);
                 return sum;
             }
         }
-
-        public int CategoryLimitCount { get; set; }
     }
 }

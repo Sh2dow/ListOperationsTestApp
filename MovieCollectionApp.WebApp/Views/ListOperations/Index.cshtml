@@ -15,12 +15,6 @@
                         </th>
                     </tr>
                     <tr>
-                        <th>
-                            @Html.Label("Categories Limit"):
-                        </th>
-                        <th>
-                            @Html.EditorFor(m => m.CategoryLimitCount, new { @class = "form-control" })
-                        </th>
                     </tr>
                     <tr>
                         <th>
@@ -58,47 +52,49 @@
                                 </label>
                             </th>
                         </tr>
-                        for (var j = 0; j < Model.Categories[i].Movies.Count; j++)
+                        if (Model.Categories[i].Enabled)
                         {
-                            <tr class="position-sticky" id="categoryToggleExternalContent">
-                                @{
-                                    var conditionAttributes = !Model.Categories[i].Enabled ?
-                                        (object)new { htmlAttributes = new { disabled = "disabled", @class = "form-control" } } :
-                                        (object)new { htmlAttributes = new { @class = "form-control" } };
-                                }
-                                <td>
-                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Name, conditionAttributes)
-                                    @Html.HiddenFor(m => m.Categories[i].Movies[j].Name)
-                                </td>
-                                <td>
-                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Year, conditionAttributes)
-                                    @Html.HiddenFor(m => m.Categories[i].Movies[j].Year)
-                                </td>
-                                <td>
-                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Rating, conditionAttributes)
-                                    @Html.HiddenFor(m => m.Categories[i].Movies[j].Rating)
-                                </td>
-                                <td>
-                                    <label class="btn btn-dark">
-                                        @{
-                                            object checkboxAttributes;
-                                            if (!Model.Categories[i].Enabled)
-                                            {
-                                                checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
-                                                      (object)new { htmlAttributes = new { disabled = "disabled", @class = "checkbox-large", @checked = "checked" } } :
-                                                      (object)new { htmlAttributes = new { disabled = "disabled", @class = "checkbox-large" } };
-                                            }
-                                            else
-                                            {
-                                                checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
+                            for (var j = 0; j < Model.Categories[i].Movies.Count; j++)
+                            {
+                                <tr class="position-sticky" id="categoryToggleExternalContent">
+                                    @{
+                                        var conditionAttributes = (object)new { htmlAttributes = new { @class = "form-control" } };
+
+                                    }
+                                    <td>
+                                        @Html.EditorFor(m => m.Categories[i].Movies[j].Name, conditionAttributes)
+                                        @Html.HiddenFor(m => m.Categories[i].Movies[j].Name)
+                                    </td>
+                                    <td>
+                                        @Html.EditorFor(m => m.Categories[i].Movies[j].Year, conditionAttributes)
+                                        @Html.HiddenFor(m => m.Categories[i].Movies[j].Year)
+                                    </td>
+                                    <td>
+                                        @Html.EditorFor(m => m.Categories[i].Movies[j].Rating, conditionAttributes)
+                                        @Html.HiddenFor(m => m.Categories[i].Movies[j].Rating)
+                                    </td>
+                                    <td>
+                                        <label class="btn btn-dark">
+                                            @{
+                                                object checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
                                                       (object)new { htmlAttributes = new { @class = "checkbox-large", @checked = "checked" } } :
                                                       (object)new { htmlAttributes = new { @class = "checkbox-large" } };
                                             }
-                                        }
-                                        @Html.EditorFor(m => m.Categories[i].Movies[j].Seen, checkboxAttributes)
-                                    </label>
-                                </td>
-                            </tr>
+                                            @Html.EditorFor(m => m.Categories[i].Movies[j].Seen, checkboxAttributes)
+                                        </label>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        if (!Model.Categories[i].Enabled)
+                        {
+                            for (var j = 0; j < Model.Categories[i].Movies.Count; j++)
+                            {
+                                @Html.HiddenFor(m => m.Categories[i].Movies[j].Name)
+                                @Html.HiddenFor(m => m.Categories[i].Movies[j].Year)
+                                @Html.HiddenFor(m => m.Categories[i].Movies[j].Rating)
+                                @Html.HiddenFor(m => m.Categories[i].Movies[j].Seen)
+                            }
                         }
                     }
                 </tbody>
