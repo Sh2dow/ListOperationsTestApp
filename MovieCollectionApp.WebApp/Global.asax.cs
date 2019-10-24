@@ -2,7 +2,7 @@
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace WebApp
+namespace MovieCollectionApp.WebApp
 {
     public class MvcApplication : System.Web.HttpApplication
     {
