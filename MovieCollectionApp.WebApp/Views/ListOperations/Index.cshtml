@@ -1,4 +1,4 @@
-﻿@model ViewModels.Models.MovieCollectionViewModel
+﻿@model MovieCollectionApp.ViewModels.Models.MovieCollectionViewModel
 
 <div class="jumbotron">
     <div class="panel-body" id="mainForm">
@@ -8,7 +8,7 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.LabelFor(m => m.Id, new { @class = "control-label" })
+                            @Html.LabelFor(m => m.Id, new { @class = "control-label" }):
                         </th>
                         <th>
                             @Html.EditorFor(m => m.Id, new { @class = "form-control" })
@@ -66,15 +66,17 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td class="row form-inline">
-                            @Html.LabelFor(m => m.TotalSeen, new { @class = "control-label col-md-4" })
-                        </td>
-                        <td>
-                            @Html.DisplayFor(m => m.TotalSeen, new { @class = "form-control col-md-4" })
-                        </td>
-                        <td>
+                        <th>
+                            @Html.LabelFor(m => m.TotalSeen, new { @class = "control-label" }):
+                        </th>
+                        <th>
+                            @Html.DisplayFor(m => m.TotalSeen, new { @class = "form-control" })
+                        </th>
+                        <th>
+                        </th>
+                        <th>
                             <input type="submit" value="Save" class="btn btn-primary" />
-                        </td>
+                        </th>
                     </tr>
                 </tfoot>
             </table>
