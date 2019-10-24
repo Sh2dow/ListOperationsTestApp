@@ -17,6 +17,7 @@ namespace ListOperationsApp.Models
         [Display(Name = "Movie Id")]
         public int Id { get; set; }
 
+        [Display(Name = "Movie Name")]
         public string Name { get; set; }
 
         public int Year { get; set; }

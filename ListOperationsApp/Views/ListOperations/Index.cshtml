@@ -1,84 +1,83 @@
 ﻿@model ListOperationsApp.Models.MovieCollectionViewModel
 
 <div class="jumbotron">
-        <div class="panel-body" id="mainForm">
-            @using (Html.BeginForm("Index", "ListOperations", FormMethod.Post))
-            {
-                <table class="table">
-                    <thead>
+    <div class="panel-body" id="mainForm">
+        @using (Html.BeginForm("Index", "ListOperations", FormMethod.Post))
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.LabelFor(m => m.Id, new { @class = "control-label" })
+                        </th>
+                        <th>
+                            @Html.EditorFor(m => m.Id, new { @class = "form-control" })
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            @Html.Label("Name")
+                        </th>
+                        <th>
+                            @Html.Label("Year")
+                        </th>
+                        <th>
+                            @Html.Label("Rating")
+                        </th>
+                        <th>
+                            @Html.Label("Seen")
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.Categories.Count; i++)
+                    {
                         <tr>
                             <th>
-                                @Html.LabelFor(m => m.Id, new { @class = "control-label" })
-                            </th>
-                            <th>
-                                @Html.EditorFor(m => m.Id, new { @class = "form-control" })
+                                @Html.TextBoxFor(c => c.Categories[i].Name, new { disabled = "disabled", @class = "control-label" })
+                                @Html.HiddenFor(c => c.Categories[i].Name)
                             </th>
                         </tr>
-                        <tr>
-                            <th>
-                                @Html.Label("Name")
-                            </th>
-                            <th>
-                                @Html.Label("Year")
-                            </th>
-                            <th>
-                                @Html.Label("Rating")
-                            </th>
-                            <th>
-                                @Html.Label("Seen")
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for (var i = 0; i < Model.Categories.Count; i++)
+                        for (var j = 0; j < Model.Categories[i].Movies.Count; j++)
                         {
                             <tr>
-                                <th>
-                                    @Html.DisplayFor(c => c.Categories[i].Name)
-                                </th>
+                                <td>
+                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Name, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Year, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+                                <td>
+                                    @Html.EditorFor(m => m.Categories[i].Movies[j].Rating, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+                                <td>
+                                    <label class="btn btn-dark">
+                                        @{
+                                            var checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
+                                                (object)new { htmlAttributes = new { @class = "checkbox-large", @checked = "checked" } } :
+                                                (object)new { htmlAttributes = new { @class = "checkbox-large" } };
+                                        }
+                                        @Html.EditorFor(m => m.Categories[i].Movies[j].Seen, checkboxAttributes)
+                                    </label>
+                                </td>
                             </tr>
-                            for (var j = 0; j < Model.Categories[i].Movies.Count; j++)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.EditorFor(m => m.Categories[i].Movies[j].Name, new { htmlAttributes = new { @class = "form-control" } })
-                                    </td>
-                                    <td>
-                                        @Html.EditorFor(m => m.Categories[i].Movies[j].Year, new { htmlAttributes = new { @class = "form-control" } })
-                                    </td>
-                                    <td>
-                                        @Html.EditorFor(m => m.Categories[i].Movies[j].Rating, new { htmlAttributes = new { @class = "form-control" } })
-                                    </td>
-                                    <td>
-                                        <label class="btn btn-dark">
-                                            @{
-                                                var checkboxAttributes = Model.Categories[i].Movies[j].Seen ?
-                                                    (object)new { htmlAttributes = new { @class = "checkbox-large", @checked = "checked" } } :
-                                                    (object)new { htmlAttributes = new { @class = "checkbox-large" } };
-                                            }
-                                            @Html.EditorFor(m => m.Categories[i].Movies[j].Seen, checkboxAttributes)
-                                        </label>
-                                    </td>
-                                </tr>
-                            }
                         }
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td class="row form-inline">
-                                @Html.LabelFor(m => m.TotalSeen, new { @class = "control-label col-md-4" })
-                            </td>
-                            <td>
-                                @Html.DisplayFor(m => m.TotalSeen, new { @class = "form-control col-md-4" })
-                            </td>
-                            <td>
-                            </td>
-                            <td>
-                                <input type="submit" value="Save" class="btn btn-primary" />
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-            }
-        </div>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="row form-inline">
+                            @Html.LabelFor(m => m.TotalSeen, new { @class = "control-label col-md-4" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => m.TotalSeen, new { @class = "form-control col-md-4" })
+                        </td>
+                        <td>
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+    </div>
 </div>
