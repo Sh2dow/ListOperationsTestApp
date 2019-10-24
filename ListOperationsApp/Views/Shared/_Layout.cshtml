@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="collapse" id="navbarToggleExternalContent">
+    <div class="collapse position-sticky" id="navbarToggleExternalContent">
         <nav class="navbar navbar-dark bg-dark">
             <div class="container">
                 @Html.ActionLink(" Home", "Index", "ListOperations", null, new { hidefocus = "hidefocus", @class = "navbar-toggler" })
@@ -26,9 +26,11 @@
     <br>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
+        <footer class="fixed-bottom">
+            <hr />
+            <div class="container">
+                <p>&copy; @DateTime.Now.Year - ASP.NET Application</p>
+            </div>
         </footer>
     </div>
 

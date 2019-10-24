@@ -24,6 +24,6 @@ textarea {
     max-width: 280px;
 }
 
-    input[type="checkbox"].checkbox-large {
-        transform: scale(3);
-    }
+input[type="checkbox"].checkbox-large {
+    transform: scale(3);
+}
